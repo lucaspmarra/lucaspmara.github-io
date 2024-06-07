@@ -1,0 +1,5 @@
+schema:
+  - https://graphql.contentful.com/content/v1/spaces/${CONTENT_SPACE}:
+      headers:
+        Authorization: Bearer ${CONTENT_TOKEN}
+documents: '**/*.gql'

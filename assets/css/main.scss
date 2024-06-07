@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*@font-face {
+  font-family: 'aharoni';
+  src: local('/fonts/aharoni/ahronbd.ttf');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}*/
+@media only screen and (max-width: 40em) {
+  html,
+  body {
+    font-family: "JetBrains Mono", sans-serif !important;
+    background: #1E1D22 url(/assets/img/cat-background-mobile-opacity-2.png) no-repeat !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100% !important;
+    height: 100% !important;
+    overflow: hidden;
+    position: relative;
+    //color: #2c3e50;
+    //background-color: #f1f4f6;
+  }
+}
+
+html,
+body {
+  font-family: "JetBrains Mono", sans-serif !important;
+  background: #1E1D22 url(/assets/img/cat-background.png) no-repeat;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100% !important;
+  height: 100% !important;
+  overflow: hidden;
+  position: relative;
+  //color: #2c3e50;
+  //background-color: #f1f4f6;
+
+  .wrapper,
+  .content {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .content {
+    overflow-x: hidden;
+  }
+
+  .content .section {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .image-container {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    perspective: 500px;
+    overflow: hidden;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}

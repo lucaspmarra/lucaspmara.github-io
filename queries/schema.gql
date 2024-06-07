@@ -1,0 +1,9 @@
+query Hero {
+    heroSection(id: "4WhpbBBwrGJDGpfeaEU62m"){
+        title
+        body{
+            json
+        }
+    }
+}
+
