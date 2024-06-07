@@ -43,10 +43,10 @@ watchEffect(() => {
 .home {
   overflow-y: scroll;
   box-sizing: content-box;
-  height: 400px;
+  height: 550px;
   &__title {
     font-weight: 700;
-    font-size: 52px;
+    font-size: 48px;
     line-height: 52px;
     color: #E8E8E8;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
