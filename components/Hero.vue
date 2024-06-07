@@ -41,6 +41,9 @@ watchEffect(() => {
 
 <style scoped lang="scss">
 .home {
+  overflow-y: scroll;
+  box-sizing: content-box;
+  height: 400px;
   &__title {
     font-weight: 700;
     font-size: 52px;

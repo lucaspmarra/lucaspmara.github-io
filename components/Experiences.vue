@@ -47,7 +47,7 @@ const {data: experiences} = await useAsyncData('experiences', async () => {
 .home {
   overflow-y: scroll;
   box-sizing: content-box;
-  height: 750px;
+  height: 400px;
 
   &__title {
     text-transform: uppercase;
