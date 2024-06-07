@@ -41,7 +41,6 @@ watchEffect(() => {
 
 <style scoped lang="scss">
 .home {
-
   &__title {
     font-weight: 700;
     font-size: 52px;
