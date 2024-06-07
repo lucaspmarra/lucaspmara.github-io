@@ -27,7 +27,7 @@ const {data: experiences} = await useAsyncData('experiences', async () => {
 </script>
 
 <template>
-  <UContainer>
+  <UContainer v-if="experiences">
     <UCard class="mt-10 home"
            :ui="{ background: 'bg-transparent dark:bg-transparent', ring: 'ring-transparent dark:ring-transparent' }">
       <template v-for="(item, index) in experiences.items" :key="index">

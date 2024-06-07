@@ -28,7 +28,7 @@ watchEffect(() => {
 </script>
 
 <template>
-    <UCard class="mt-10 home"
+    <UCard v-if="hero" class="mt-10 home"
            :ui="{ background: 'bg-transparent dark:bg-transparent', ring: 'ring-transparent dark:ring-transparent' }">
       <h1 class="home__title">{{ hero.title }}</h1>
       <template v-for="(p, index) in hero.body.json.content" :key="index">
