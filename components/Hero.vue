@@ -22,6 +22,7 @@ const {data: hero} = await useAsyncData('hero', async () => {
 
 watchEffect(() => {
   if (hero.value) {
+    console.log('hero...', hero)
     store.setLoaded(true);
   }
 });
