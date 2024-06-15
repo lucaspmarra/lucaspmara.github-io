@@ -4,26 +4,43 @@
   box-sizing: border-box;
 }
 
-/*@font-face {
-  font-family: 'aharoni';
-  src: local('/fonts/aharoni/ahronbd.ttf');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}*/
+
 @media only screen and (max-width: 40em) {
   html,
   body {
-    font-family: "JetBrains Mono", sans-serif !important;
-    background: #1E1D22 url(/assets/img/cat-background-mobile-opacity-2.png) no-repeat !important;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    min-height: 100% !important;
-    height: 100% !important;
-    overflow: hidden;
-    position: relative;
-    //color: #2c3e50;
-    //background-color: #f1f4f6;
+    background: #1E1D22 url(/assets/img/cat-background-mobile-opacity-2.png) center no-repeat !important;
+  }
+
+  .home {
+    height: calc(90vh + 15px) !important;
+    max-height: 95vh !important;
+    background-color: rgba(8, 0, 26, 0.2) !important;
+    //background-color: rgba(255, 255, 255, 0.1) !important;
+    //padding-bottom: 50% !important;
+    box-sizing: border-box !important;
+    border-radius: 12px !important;
+
+    &__title {
+      font-size: 24px !important;
+      line-height: normal !important;
+      /* top | right | bottom | left */
+      margin: 10px 0 10px 0;
+    }
+
+    &__company_name {
+      text-transform: uppercase;
+      font-size: 18px;
+      /* top | right | bottom | left */
+      margin: 10px 0 10px 0;
+    }
+
+    &__body {
+      /* top and bottom | left and right */
+      padding: 5% 0;
+    }
+  }
+  .header{
+    border-radius: 12px !important;
   }
 }
 
@@ -73,5 +90,37 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: center center;
+  }
+}
+
+.home {
+  height: 700px;
+  max-height: 700px;
+  overflow-y: auto;
+  line-height: 28px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 52px;
+    color: #E8E8E8;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+
+  &__company_name {
+    text-transform: uppercase;
+  }
+}
+
+@-moz-document url-prefix() {
+  .home {
+    scrollbar-width: none;
   }
 }

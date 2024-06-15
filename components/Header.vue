@@ -50,7 +50,15 @@ watch(() => route.fullPath, () => {
 
       </UCard>
     </USlideover>
-    <UButton class="flex md:hidden" label="Menu" @click="isOpen = true"/>
+    <header class="flex items-center justify-between p-4 bg-gray-800 text-white lg:hidden m-1 header">
+<!--      <div></div>-->
+      <div class="text-lg font-semibold">Marra's Portfolio</div>
+      <UButton
+          icon="i-heroicons-bars-3-solid"
+          @click="isOpen = true"
+          class="md:hidden"
+      />
+    </header>
 
     <UCard class="m-1 hidden lg:block"
            :ui="{ background: 'bg-transparent dark:bg-transparent', ring: 'ring-transparent dark:ring-transparent' }">
@@ -66,13 +74,13 @@ watch(() => route.fullPath, () => {
           >
             Inicio
           </ULink>
-          <ULink
+<!--          <ULink
               exact
               active-class="text-purple-600"
               inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
           >
             Sobre
-          </ULink>
+          </ULink>-->
           <ULink
               exact
               to="/experiences"
@@ -80,14 +88,14 @@ watch(() => route.fullPath, () => {
               inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
           >
             Experiências
-          </ULink>
+          </ULink><!--
           <ULink
               exact
               active-class="text-purple-600"
               inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
           >
             Contato
-          </ULink>
+          </ULink>-->
         </div>
       </div>
     </UCard>

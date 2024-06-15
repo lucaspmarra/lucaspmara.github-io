@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {gql} from 'nuxt-graphql-request/utils';
-import {watchEffect} from 'vue';
+import {watch} from 'vue';
+import {useHeroStore} from "~/stores/heroStore";
 
 const {$graphql} = useNuxtApp();
 const store = useHeroStore();
@@ -20,41 +21,30 @@ const {data: hero} = await useAsyncData('hero', async () => {
   return data.heroSection;
 });
 
-watchEffect(() => {
-  if (hero.value) {
-    console.log('hero...', hero)
+watch(() => hero.value, (value) => {
+  console.log('hero...', value);
+  if (value) {
     store.setLoaded(true);
   }
 });
+
+onBeforeMount(()=>{
+  if (hero.value){
+    store.setLoaded(true);
+  }
+})
 </script>
 
 <template>
-    <UCard v-if="hero" class="mt-10 home"
+  <UContainer>
+    <UCard v-if="hero" class="home"
            :ui="{ background: 'bg-transparent dark:bg-transparent', ring: 'ring-transparent dark:ring-transparent' }">
       <h1 class="home__title">{{ hero.title }}</h1>
+      <div class="home__body-wrapper">
       <template v-for="(p, index) in hero.body.json.content" :key="index">
-        <p class="my-20 home__body" v-html="p.content[0].value"></p>
+        <p class="home__body" v-html="p.content[0].value"></p>
       </template>
+      </div>
     </UCard>
+  </UContainer>
 </template>
-
-
-<style scoped lang="scss">
-.home {
-  overflow-y: scroll;
-  box-sizing: content-box;
-  height: 550px;
-  &__title {
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 52px;
-    color: #E8E8E8;
-    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-  }
-
-}
-
-</style>

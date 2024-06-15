@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import {gql} from 'nuxt-graphql-request/utils';
+import {watch} from "vue";
+import {useHeroStore} from "~/stores/heroStore";
 
 const {$graphql} = useNuxtApp();
 const store = useHeroStore();
@@ -24,46 +26,33 @@ const {data: experiences} = await useAsyncData('experiences', async () => {
   const data = await $graphql.default.request(query);
   return data.jobExperienceCollection;
 });
+
+watch(() => experiences.value, (value) => {
+  console.log('experiences...', value);
+  if (value) {
+    store.setLoaded(true);
+  }
+});
+
+onBeforeMount(()=>{
+  if (experiences.value){
+    store.setLoaded(true);
+  }
+})
 </script>
 
 <template>
   <UContainer v-if="experiences">
-    <UCard class="mt-10 home"
+    <UCard class="home"
            :ui="{ background: 'bg-transparent dark:bg-transparent', ring: 'ring-transparent dark:ring-transparent' }">
-      <template v-for="(item, index) in experiences.items" :key="index">
-        <h1 class="home__title">{{ item.title }}</h1>
-        <p class="home__company_name">{{ item.companyName }}</p>
-        <p class="mb-20 home__body" v-html="item.body.json.content[0].content[0].value"></p>
-      </template>
-
-      <!--      <template v-for="(p, index) in hero.body.json.content" :key="index">
-              <p class="my-20 home__body" v-html="p.content[0].value"></p>
-            </template>-->
+      <div class="home__body-wrapper">
+        <template v-for="(item, index) in experiences.items" :key="index">
+          <h1 class="home__title">{{ item.title }}</h1>
+          <p class="home__company_name">{{ item.companyName }}</p>
+          <p class="home__body" v-html="item.body.json.content[0].content[0].value"></p>
+          <UDivider v-if="index < experiences.items.length - 1" icon="i-simple-icons-github" />
+        </template>
+      </div>
     </UCard>
   </UContainer>
 </template>
-
-<style scoped lang="scss">
-.home {
-  overflow-y: scroll;
-  box-sizing: content-box;
-  height: 550px;
-
-  &__title {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 52px;
-    color: #E8E8E8;
-    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-  }
-
-  &__company_name {
-    text-transform: uppercase;
-  }
-}
-
-</style>
